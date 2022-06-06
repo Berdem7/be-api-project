@@ -3,8 +3,10 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 const apiRoutes = require("./routes/api");
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/api", apiRoutes);
 app.use(express.json());
@@ -23,7 +25,7 @@ console.log(process.env.ATLAS_CONNECTION_URL);
 
 mongoose
   .connect(process.env.ATLAS_CONNECTION_URL, { useNewUrlParser: true })
-  .then(() => console.log("Database connected succesfully"))
+  .then(() => console.log("Database connected successfully"))
   .catch((err) => console.log(err));
 
 mongoose.Promise = global.Promise;

@@ -5,6 +5,7 @@ const CategorySchema = new Schema({
   _id: mongoose.Types.ObjectId,
   name: {
     type: String,
+    unique: [true, "Name is already given"],
     required: [true, "Enter the food name"],
   },
   color: {
