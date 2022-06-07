@@ -15,7 +15,7 @@ router.put("/category", jsonParser, CategoryController.update_categories);
 
 //Foods
 router.get("/category/search", CategoryController.find_categories);
-router.get("/foods/search/", FoodController.search_foods);
+router.get("/foods/search", FoodController.search_foods);
 router.get("/foods", FoodController.get_foods);
 router.get("/foods/:id", FoodController.findById_foods);
 router.post("/foods", jsonParser, FoodController.create_foods);
