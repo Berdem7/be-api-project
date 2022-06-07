@@ -8,10 +8,10 @@ const bodyParser = require("body-parser");
 const apiRoutes = require("./routes/api");
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use("/api", apiRoutes);
 app.use(express.json());
 app.use(cors());
-app.use((res, req, next) => {
+
+app.use("/api", apiRoutes, (res, req, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",

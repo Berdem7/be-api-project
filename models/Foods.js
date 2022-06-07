@@ -10,34 +10,32 @@ const FoodSchema = new Schema({
   },
   price: {
     type: Number,
-    required: [true, "Enter the food price"],
+    minimum: 0,
   },
   portion: {
     type: Number,
-    required: [true, "Enter the food portion"],
-  },
-  stock: {
-    type: Number,
-    required: [true, "Enter the food stock"],
+    minimum: 0,
   },
   image: {
     type: String,
-    required: [true, "Enter the food image"],
   },
   tumb_img: {
     type: String,
-    required: [true, "Enter the food thumbnail"],
   },
   ingredients: {
     type: String,
-    required: [true, "Enter the food ingredients"],
   },
   sales: {
     type: Boolean,
-    required: [true, "Is the food sold or not"],
+    default: false,
+  },
+  status: {
+    type: Boolean,
   },
   discount: {
     type: Number,
+    minimum: 0,
+    default: 0,
   },
   category: {
     type: mongoose.SchemaTypes.Mixed,
