@@ -3,7 +3,7 @@ const Foods = require("../models/Foods");
 
 const search_foods = (req, res) => {
   Foods.find(
-    { name: { $regex: `${req.query.name}`, $options: "i" } },
+    { name: { $regex: /req.query.name/, $options: "i" } },
     function (err, data) {
       if (err) next;
       res.json(data);

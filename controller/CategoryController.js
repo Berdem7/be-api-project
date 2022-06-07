@@ -47,7 +47,7 @@ const delete_categories = (req, res) => {
 const update_categories = (req, res) => {
   // console.log(req.body);
   Category.findByIdAndUpdate(
-    req.body.id,
+    req.body._id,
     {
       name: req.body.name,
       color: req.body.color,
