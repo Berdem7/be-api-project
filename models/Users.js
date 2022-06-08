@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  _id: mongoose.Types.ObjectId,
+  // _id: mongoose.Types.ObjectId,
   name: {
     type: String,
     required: [true, "Enter the user name"],
@@ -21,7 +21,7 @@ const UserSchema = new Schema({
     required: [true, "Enter the password"],
   },
   address: {
-    type: String,
+    type: Object,
   },
   role_id: {
     type: { type: Number, enum: [1, 2] },

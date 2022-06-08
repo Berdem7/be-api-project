@@ -6,6 +6,7 @@ const jsonParser = bodyParser.json();
 const CategoryController = require("../controller/CategoryController");
 const FoodController = require("../controller/FoodController");
 const UserController = require("../controller/UserController");
+const Authentication = require("../controller/Authentication");
 
 //Categories
 router.get("/category", CategoryController.get_categories);
@@ -28,5 +29,7 @@ router.get("/users", UserController.get_users);
 router.post("/users", jsonParser, UserController.create_users);
 router.delete("/users/:id", UserController.delete_users);
 router.put("/users", jsonParser, UserController.update_users);
+router.post("/users/register", Authentication.register);
+router.post("/users/login", Authentication.login);
 
 module.exports = router;
