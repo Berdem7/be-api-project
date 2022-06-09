@@ -83,6 +83,7 @@ const register = async (req, res, next) => {
 };
 
 const login = async (req, res, next) => {
+  // console.log(req.cookie);
   const data = req.body;
   if (data.email && data.password) {
     const oldUser = await Users.findOne({ email: data.email });
@@ -107,6 +108,7 @@ const login = async (req, res, next) => {
         //   "Set-Cookie",
         //   cookie.serialize("foo", "bar", { httpOnly: true })
         // );
+        res.cookie("test", token);
         res.status(200).json({
           success: true,
           data: oldUser,

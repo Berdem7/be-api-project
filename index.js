@@ -15,26 +15,26 @@ app.use(express.json());
 app.use(cors());
 app.use(cookieParser());
 
-app.use("/cookies", (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Content-Type", "application/json");
-  next();
-});
+// app.use("/cookies", (req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   res.header("Content-Type", "application/json");
+//   next();
+// });
 
-app.post("/cookies", (req, res) => {
-  const dataToSecure = req.body;
-  res.cookie((secureCookie = JSON.stringify(dataToSecure)), {
-    secure: true,
-    httpOnly: true,
-    expires: dayjs().add(30, "days").toDate(),
-  });
-  res.send("Cookie added");
-  console.log("successsss");
-});
+// app.post("/cookies", (req, res) => {
+//   const dataToSecure = req.body;
+//   res.cookie((secureCookie = JSON.stringify(dataToSecure)), {
+//     secure: true,
+//     httpOnly: true,
+//     expires: dayjs().add(30, "days").toDate(),
+//   });
+//   res.send("Cookie added");
+//   console.log("successsss");
+// });
 
 app.use("/api", apiRoutes, (res, req, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -43,6 +43,8 @@ app.use("/api", apiRoutes, (res, req, next) => {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   res.header("Content-Type", "application/json");
+  res.header("Set-Cookie", "visited=true; Max-Age=3000; HttpOnly, Secure");
+
   next();
 });
 
