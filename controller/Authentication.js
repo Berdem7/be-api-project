@@ -2,6 +2,11 @@ const Users = require("../models/Users");
 const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+// const cookieParser = require("cookie-parser");
+const express = require("express");
+const cookie = require("cookie");
+
+const router = express.Router();
 
 const register = async (req, res, next) => {
   const data = req.body;
@@ -98,11 +103,33 @@ const login = async (req, res, next) => {
             expiresIn: "2h",
           }
         );
+        // res.setHeader(
+        //   "Set-Cookie",
+        //   cookie.serialize("foo", "bar", { httpOnly: true })
+        // );
         res.status(200).json({
           success: true,
-          data: data,
+          data: oldUser,
           token: token,
         });
+        // let dataToSecure = {
+        //   data: oldUser,
+        //   token: token,
+        // };
+        // res.status(200);
+        // res.cookie("name", "tobi", {
+        //   domain: ".example.com",
+        //   path: "/admin",
+        //   secure: true,
+        // });
+        // router.post("/cookies", dataToSecure, (req, res, next) => {
+        //   if (err) throw err;
+        //   console.log("Success cookie");
+        // });
+        // res.setHeader('Set-Cookie', cookie.serialize('user', String(dataToSecure), {
+        //   httpOnly: true,
+        //   maxAge: 60 * 60 * 24 * 7 // 1 week
+        // }));
         return;
       } else {
         return res.status(400).json({

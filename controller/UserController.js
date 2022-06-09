@@ -15,10 +15,9 @@ const get_users = (req, res) => {
   });
 };
 
-const create_users = async (req, res) => {
+const create_users = async (req, res, next) => {
   const reqBody = req.body;
   let newUser = new Users({
-    _id: mongoose.Types.ObjectId(),
     name: reqBody.name,
     email: reqBody.email,
     phone: reqBody.phone,
