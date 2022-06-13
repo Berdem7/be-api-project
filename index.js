@@ -12,7 +12,7 @@ const apiRoutes = require("./routes/api");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(cookieParser());
 
 // app.use("/cookies", (req, res, next) => {
@@ -43,7 +43,7 @@ app.use("/api", apiRoutes, (res, req, next) => {
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   res.header("Content-Type", "application/json");
-  res.header("Set-Cookie", "visited=true; Max-Age=3000; HttpOnly, Secure");
+  // res.header("Set-Cookie", "visited=true; Max-Age=3000; HttpOnly, Secure");
 
   next();
 });

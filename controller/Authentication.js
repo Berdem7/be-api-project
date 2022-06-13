@@ -108,11 +108,15 @@ const login = async (req, res, next) => {
         //   "Set-Cookie",
         //   cookie.serialize("foo", "bar", { httpOnly: true })
         // );
-        res.cookie("test", token);
         res.status(200).json({
           success: true,
           data: oldUser,
           token: token,
+        });
+        res.cookie("user", "Byambaa", {
+          sameSite: "strict",
+          // path: "/",
+          expires: new Date(new Date().getTime() + 30 * 1000),
         });
         // let dataToSecure = {
         //   data: oldUser,
