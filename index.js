@@ -12,7 +12,8 @@ const apiRoutes = require("./routes/api");
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+// app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors());
 app.use(cookieParser());
 
 // app.use("/cookies", (req, res, next) => {

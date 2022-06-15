@@ -113,11 +113,11 @@ const login = async (req, res, next) => {
           data: oldUser,
           token: token,
         });
-        res.cookie("user", "Byambaa", {
-          sameSite: "strict",
-          // path: "/",
-          expires: new Date(new Date().getTime() + 30 * 1000),
-        });
+        // res.cookie("user", "Byambaa", {
+        //   sameSite: "strict",
+        //   // path: "/",
+        //   expires: new Date(new Date().getTime() + 30 * 1000),
+        // });
         // let dataToSecure = {
         //   data: oldUser,
         //   token: token,
